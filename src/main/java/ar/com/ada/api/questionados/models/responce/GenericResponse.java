@@ -1,6 +1,6 @@
 package ar.com.ada.api.questionados.models.responce;
 
-public class GenericResponce {
+public class GenericResponse {
 
     public boolean isOk;
     public Integer id;
