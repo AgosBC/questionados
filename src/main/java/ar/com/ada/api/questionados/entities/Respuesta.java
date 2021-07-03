@@ -18,7 +18,7 @@ public class Respuesta {
     @Id
     @Column(name = "respuesta_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer respuesta_id;
+    private Integer respuestaId;
     
     private String texto;
     private boolean esCorrecta;
@@ -28,12 +28,14 @@ public class Respuesta {
     private Pregunta pregunta;
 
 
+    
+
 
     public Integer getRespuesta_id() {
-        return respuesta_id;
+        return respuestaId;
     }
     public void setRespuesta_id(Integer respuesta_id) {
-        this.respuesta_id = respuesta_id;
+        this.respuestaId = respuesta_id;
     }
     public String getTexto() {
         return texto;
@@ -52,8 +54,10 @@ public class Respuesta {
     }
     public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
+        this.pregunta.agregarRespuesta(this); // relacion bidireccional 
     }
 
+    
     
 
 

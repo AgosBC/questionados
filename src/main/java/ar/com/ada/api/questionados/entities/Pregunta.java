@@ -50,12 +50,17 @@ public class Pregunta {
     }
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+        this.categoria.agregarPregunta(this);
     }
     public List<Respuesta> getOpciones() {
         return opciones;
     }
     public void setOpciones(List<Respuesta> opciones) {
         this.opciones = opciones;
+    }
+
+    public void agregarRespuesta(Respuesta respuesta){
+        this.opciones.add(respuesta);
     }
 
     

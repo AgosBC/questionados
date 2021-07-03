@@ -24,8 +24,7 @@ public class PreguntaService {
     @Autowired
     CategoriaService categoriaService;
 
-    @Autowired
-    RespuestaService respuestaService;
+    
 
     
     public Pregunta agregarPregunta(String enunciado, String opcion1, String opcion2, String opcion3, Integer categoriaId){
@@ -36,10 +35,10 @@ public class PreguntaService {
         repo.save(pregunta);
 
         Respuesta respuesta = new Respuesta();
-        respuesta.se
         
         
-        respuestaService.agregarRespuesta(opcion1);// tiene que agregar un objeto de tipo respuesta
+        
+       // tiene que agregar un objeto de tipo respuesta
         
         
         return pregunta;
