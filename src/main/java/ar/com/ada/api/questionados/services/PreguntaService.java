@@ -1,10 +1,9 @@
 package ar.com.ada.api.questionados.services;
 
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import ar.com.ada.api.questionados.entities.Categoria;
 import ar.com.ada.api.questionados.entities.Pregunta;
@@ -18,30 +17,40 @@ public class PreguntaService {
     @Autowired
     PreguntaRepository repo;
 
-    @Autowired 
-    RespuestaRepository respuestaRepo;
-
     @Autowired
     CategoriaService categoriaService;
 
-    
 
-    
-    public Pregunta agregarPregunta(String enunciado, String opcion1, String opcion2, String opcion3, Integer categoriaId){
+    public List<Pregunta> traerPreguntas(){
+        return repo.findAll();
+    }
+
+    public Pregunta buscarPreguntaPorId(Integer preguntaId){
+        Optional<Pregunta> resultado = repo.findById(preguntaId);
+
+        if(resultado.isPresent()){
+            return resultado.get();
+        }
+        return null;
+        
+      
+    }
+
+        
+    public Pregunta crearPreunta(String enunciado, Integer categoriaId, List<Respuesta> opciones){
+
         Pregunta pregunta = new Pregunta();
         pregunta.setEnunciado(enunciado);
         Categoria categoria = categoriaService.buscarCategoria(categoriaId);
         pregunta.setCategoria(categoria);
+        
+        for (Respuesta respuesta : opciones) { //por cada respuesta, agregarla a la pregunta
+            respuesta.setPregunta(pregunta);
+            
+        }
         repo.save(pregunta);
-
-        Respuesta respuesta = new Respuesta();
-        
-        
-        
-       // tiene que agregar un objeto de tipo respuesta
-        
-        
         return pregunta;
+        
     }
     
 

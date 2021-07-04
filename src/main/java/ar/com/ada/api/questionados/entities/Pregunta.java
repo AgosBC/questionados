@@ -21,7 +21,7 @@ public class Pregunta {
     @Id
     @Column(name = "pregunta_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer preguntaId;
 
     private String enunciado;
 
@@ -32,11 +32,11 @@ public class Pregunta {
    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Respuesta> opciones  = new ArrayList<>();
 
-    public Integer getId() {
-        return id;
+    public Integer getPreguntaId() {
+        return preguntaId;
     }
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPreguntaId(Integer id) {
+        this.preguntaId = preguntaId;
     }    
     
     public String getEnunciado() {

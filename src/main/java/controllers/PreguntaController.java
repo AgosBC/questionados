@@ -1,10 +1,10 @@
 package controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.questionados.entities.Pregunta;
 import ar.com.ada.api.questionados.entities.Respuesta;
@@ -18,16 +18,33 @@ public class PreguntaController {
     @Autowired
     private PreguntaService service;
 
-    
+
+    @GetMapping("/preguntas")
+    public ResponseEntity<List<Pregunta>> traerPreguntas() {
+
+        return ResponseEntity.ok(service.traerPreguntas());
+
+    }
+
+    @GetMapping("/pregunta/id")
+    public ResponseEntity<Pregunta> traerPreguntaPorId(@PathVariable Integer id){
+
+        return ResponseEntity.ok(service.buscarPreguntaPorId(id));
+    }     
 
 
     @PostMapping("/pregunta")
-    public ResponseEntity<?> agregarPregunta(@RequestBody InfoPreguntaNueva preguntaNueva){
+    public ResponseEntity<?> crearPregunta(@RequestBody InfoPreguntaNueva preguntaNueva){
+       
         GenericResponse r = new GenericResponse();
 
-        Pregunta pregunta = service.agregarPregunta(preguntaNueva.enunciado, preguntaNueva.categoriaId);
+        Pregunta pregunta = service.crearPreunta(preguntaNueva.enunciado, preguntaNueva.categoriaId, preguntaNueva.opciones);
+        r.isOk = true;
+        r.message="La pregunta fue creada con exito";
+        r.id = pregunta.getPreguntaId();
 
-        Respuesta respuesta = service.agregarRespuesta(preguntaNueva.opcion1, preguntaNueva.opcion2, preguntaNueva.opcoion3);
+        return ResponseEntity.ok(preguntaNueva);
+        
 
     }
 
