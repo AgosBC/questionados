@@ -26,14 +26,14 @@ public class PreguntaController {
 
     }
 
-    @GetMapping("/pregunta/id")
+    @GetMapping("/preguntas/id")
     public ResponseEntity<Pregunta> traerPreguntaPorId(@PathVariable Integer id){
 
         return ResponseEntity.ok(service.buscarPreguntaPorId(id));
     }     
 
 
-    @PostMapping("/pregunta")
+    @PostMapping("/preguntas")
     public ResponseEntity<?> crearPregunta(@RequestBody InfoPreguntaNueva preguntaNueva){
        
         GenericResponse r = new GenericResponse();
