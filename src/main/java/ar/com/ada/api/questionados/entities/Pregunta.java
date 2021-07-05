@@ -29,6 +29,7 @@ public class Pregunta {
     @JoinColumn(name = "categoria_id", referencedColumnName = "categoria_id")
     private Categoria categoria;
    
+    
    @OneToMany(mappedBy = "pregunta", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Respuesta> opciones  = new ArrayList<>();
 

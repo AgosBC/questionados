@@ -37,7 +37,7 @@ public class PreguntaService {
     }
 
         
-    public Pregunta crearPreunta(String enunciado, Integer categoriaId, List<Respuesta> opciones){
+    public Pregunta crearPregunta(String enunciado, Integer categoriaId, List<Respuesta> opciones){
 
         Pregunta pregunta = new Pregunta();
         pregunta.setEnunciado(enunciado);

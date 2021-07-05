@@ -9,7 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ManyToAny;
+
+
 
 @Entity
 @Table(name = "respuesta")
@@ -21,10 +22,11 @@ public class Respuesta {
     private Integer respuestaId;
     
     private String texto;
-    
+
     @Column(name = "es_correcta")
     private boolean esCorrecta;
 
+  
     @ManyToOne
     @JoinColumn(name = "pregunta_id", referencedColumnName = "pregunta_id")
     private Pregunta pregunta;

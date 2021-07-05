@@ -25,7 +25,7 @@ public class PreguntaController {
 
     }
 
-    @GetMapping("/preguntas/id")
+    @GetMapping("/preguntas/{id}")
     public ResponseEntity<Pregunta> traerPreguntaPorId(@PathVariable Integer id){
 
         return ResponseEntity.ok(service.buscarPreguntaPorId(id));
@@ -37,7 +37,7 @@ public class PreguntaController {
        
         GenericResponse r = new GenericResponse();
 
-        Pregunta pregunta = service.crearPreunta(preguntaNueva.enunciado, preguntaNueva.categoriaId, preguntaNueva.opciones);
+        Pregunta pregunta = service.crearPregunta(preguntaNueva.enunciado, preguntaNueva.categoriaId, preguntaNueva.opciones);
         r.isOk = true;
         r.message="La pregunta fue creada con exito";
         r.id = pregunta.getPreguntaId();
