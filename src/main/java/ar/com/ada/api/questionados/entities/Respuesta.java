@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -26,7 +28,7 @@ public class Respuesta {
     @Column(name = "es_correcta")
     private boolean esCorrecta;
 
-  
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pregunta_id", referencedColumnName = "pregunta_id")
     private Pregunta pregunta;
