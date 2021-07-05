@@ -1,4 +1,4 @@
-package controllers;
+package ar.com.ada.api.questionados.controllers;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.questionados.entities.Pregunta;
-import ar.com.ada.api.questionados.entities.Respuesta;
 import ar.com.ada.api.questionados.models.request.InfoPreguntaNueva;
 import ar.com.ada.api.questionados.models.responce.GenericResponse;
 import ar.com.ada.api.questionados.services.PreguntaService;

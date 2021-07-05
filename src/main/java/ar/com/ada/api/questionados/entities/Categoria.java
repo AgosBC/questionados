@@ -9,10 +9,10 @@ import javax.persistence.*;
 @Table(name = "categoria")
 public class Categoria {
 
-    @Id
-    @Column(name = "categoria_id")
+    @Id    
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int categoriaId;
+    @Column(name = "categoria_id")
+    private Integer categoriaId;
 
     private String nombre;
 
@@ -21,12 +21,12 @@ public class Categoria {
     @OneToMany (mappedBy = "categoria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Pregunta> preguntas  = new ArrayList<>();
 
-    public void setId(int id){
-        this.categoriaId = id;
+    public Integer getCategoriaId() {
+        return categoriaId;
     }
 
-    public int getCategoriaId(){
-        return categoriaId;
+    public void setCategoriaId(Integer categoriaId) {
+        this.categoriaId = categoriaId;
     }
 
     public void setNombre(String nombre){

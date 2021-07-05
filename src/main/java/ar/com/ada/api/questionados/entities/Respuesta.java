@@ -21,6 +21,8 @@ public class Respuesta {
     private Integer respuestaId;
     
     private String texto;
+    
+    @Column(name = "es_correcta")
     private boolean esCorrecta;
 
     @ManyToOne
