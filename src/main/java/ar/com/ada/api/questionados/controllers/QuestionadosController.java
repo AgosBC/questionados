@@ -2,9 +2,7 @@ package ar.com.ada.api.questionados.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import ar.com.ada.api.questionados.entities.Pregunta;
 import ar.com.ada.api.questionados.models.request.RespuestaAVerificar;
@@ -20,7 +18,7 @@ public class QuestionadosController {
     // controller del juego
     //get/quetionados/next
 
-
+    @GetMapping("/questionados/next")
     public ResponseEntity<Pregunta> traerPreguntaRandom(){
 
         Pregunta proximaPregunta = service.traerPreguntaRandom();
@@ -30,7 +28,7 @@ public class QuestionadosController {
     }
 
     //verificar si una respuesta es correcta
-    @PostMapping
+    @PostMapping("/questionados/verificaciones")
     public ResponseEntity<RespuestaVerificada> verificarRespuesta(@RequestBody RespuestaAVerificar respuestaAVerificar){
         
         RespuestaVerificada respuestaVerificada = new RespuestaVerificada();

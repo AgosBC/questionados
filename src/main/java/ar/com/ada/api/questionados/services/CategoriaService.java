@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.ada.api.questionados.entities.Categoria;
+import ar.com.ada.api.questionados.models.request.CategoriaNuevaInfo;
 import ar.com.ada.api.questionados.repos.CategoriaRepository;
 
 
@@ -58,5 +59,27 @@ public class CategoriaService {
 
     public boolean existeV2(String nombre){
         return repo.existsByNombre(nombre);
+    }
+
+    public void actualizar(Integer Id, CategoriaNuevaInfo categoriaNuevaInfo) {
+
+        Categoria categoria = this.buscar(Id);
+        categoria.setNombre(categoriaNuevaInfo.otroNombre);
+        categoria.setDescripcion(categoriaNuevaInfo.otraDescripcion);
+        repo.save(categoria);
+
+    }
+
+    public void eliminar(Integer id){
+        Categoria categoria = this.buscar(id);
+        repo.delete(categoria);
+    }
+
+    public Categoria buscar(Integer categoriaId) { // busca una por id
+
+        Categoria categoria = repo.findById(categoriaId.intValue());
+
+        return categoria;
+
     }
 }
