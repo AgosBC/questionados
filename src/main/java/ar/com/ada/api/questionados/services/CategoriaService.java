@@ -64,8 +64,8 @@ public class CategoriaService {
     public void actualizar(Integer Id, CategoriaNuevaInfo categoriaNuevaInfo) {
 
         Categoria categoria = this.buscar(Id);
-        categoria.setNombre(categoriaNuevaInfo.otroNombre);
-        categoria.setDescripcion(categoriaNuevaInfo.otraDescripcion);
+        categoria.setNombre(categoriaNuevaInfo.nombreNuevo);
+        categoria.setDescripcion(categoriaNuevaInfo.descripcionNueva);
         repo.save(categoria);
 
     }
