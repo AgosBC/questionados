@@ -2,6 +2,7 @@ package ar.com.ada.api.questionados.controllers;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,6 +46,18 @@ public class PreguntaController {
         return ResponseEntity.ok(preguntaNueva);
         
 
+    }
+
+    //delete pregunta tener en cuenta borrar las respuestas
+    @DeleteMapping("/pregunta/{id}")
+    public ResponseEntity<GenericResponse> borrar(@PathVariable Integer id){
+        GenericResponse r = new GenericResponse();
+
+        service.borrar(id);
+        
+        r.isOk = true;
+        r.message ="esta pregunta y sus respuestas han sido eliminadas";
+        return ResponseEntity.ok(r);
     }
 
     

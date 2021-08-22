@@ -17,42 +17,39 @@ public class CategoriaController {
     @Autowired
     CategoriaService service;
 
-    // get/categorias
     @GetMapping("/categorias")
-    public ResponseEntity<List<Categoria>> traerCategorias(){
+    public ResponseEntity<List<Categoria>> traerCategorias() {
 
         return ResponseEntity.ok(service.traerCategorias());
     }
 
-    //get /categoria/{id}
-
     @GetMapping("/categorias/{id}")
-    public ResponseEntity<Categoria> traerCategoriaPorId(@PathVariable Integer id){
+    public ResponseEntity<Categoria> traerCategoriaPorId(@PathVariable Integer id) {
         return ResponseEntity.ok(service.buscarCategoria(id));
     }
 
-    //post categoria
     @PostMapping("/categorias")
-    public ResponseEntity<?> crearCategoria(@RequestBody Categoria categoria){
+    public ResponseEntity<?> crearCategoria(@RequestBody Categoria categoria) {
 
         GenericResponse r = new GenericResponse();
 
-        if(service.crearCategoria(categoria)) {
+        if (service.crearCategoria(categoria)) {
             r.id = categoria.getCategoriaId();
             r.isOk = true;
             r.message = "categoria creada con exito";
             return ResponseEntity.ok(r);
-        }else{
-            r.isOk= false;
+        } else {
+            r.isOk = false;
             r.message = "la categoria ya existe";
             return ResponseEntity.badRequest().body(r);
         }
-        
+
     }
 
-    @PutMapping("/categorias/{id}") //actualiza una categoria existente
-    public ResponseEntity<GenericResponse> actualizar (@PathVariable Integer id, @RequestBody CategoriaNuevaInfo categoriaNuevaInfo){
-    
+    @PutMapping("/categorias/{id}") // actualiza una categoria existente
+    public ResponseEntity<GenericResponse> actualizar(@PathVariable Integer id,
+            @RequestBody CategoriaNuevaInfo categoriaNuevaInfo) {
+
         service.actualizar(id, categoriaNuevaInfo);
         GenericResponse respuesta = new GenericResponse();
 
@@ -64,7 +61,7 @@ public class CategoriaController {
     }
 
     @DeleteMapping("/categorias/{id}")
-    public ResponseEntity<GenericResponse>eliminar (@PathVariable Integer id){
+    public ResponseEntity<GenericResponse> eliminar(@PathVariable Integer id) {
 
         service.eliminar(id);
         GenericResponse respuesta = new GenericResponse();

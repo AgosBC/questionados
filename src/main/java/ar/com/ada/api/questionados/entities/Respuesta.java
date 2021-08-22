@@ -11,9 +11,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
-
 @Entity
 @Table(name = "respuesta")
 public class Respuesta {
@@ -22,7 +19,7 @@ public class Respuesta {
     @Column(name = "respuesta_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer respuestaId;
-    
+
     private String texto;
 
     @Column(name = "es_correcta")
@@ -33,39 +30,37 @@ public class Respuesta {
     @JoinColumn(name = "pregunta_id", referencedColumnName = "pregunta_id")
     private Pregunta pregunta;
 
-
-    
-
-
     public Integer getRespuesta_id() {
         return respuestaId;
     }
+
     public void setRespuesta_id(Integer respuesta_id) {
         this.respuestaId = respuesta_id;
     }
+
     public String getTexto() {
         return texto;
     }
+
     public void setTexto(String texto) {
         this.texto = texto;
     }
+
     public boolean isEsCorrecta() {
         return esCorrecta;
     }
+
     public void setEsCorrecta(boolean esCorrecta) {
         this.esCorrecta = esCorrecta;
     }
+
     public Pregunta getPregunta() {
         return pregunta;
     }
+
     public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
-        this.pregunta.agregarRespuesta(this); // relacion bidireccional 
+        this.pregunta.agregarRespuesta(this); // relacion bidireccional
     }
 
-    
-    
-
-
-    
 }
