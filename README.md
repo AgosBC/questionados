@@ -7,3 +7,7 @@ Para jugar se cargaran preguntas de manera random. </h5>
 - Java
 - SpringBoot
 - MySQL
+
+## Deploy 
+- Heroku
+- PostgreSQL
