@@ -9,6 +9,9 @@ Para jugar se cargaran preguntas de manera random. </h5>
 - MySQL
 
 ## Deploy 
-- Heroku -> https://api-questionados-agosb.herokuapp.com/
-            https://documenter.getpostman.com/view/16185945/TzzHmD4S            
+- Heroku 
 - PostgreSQL
+
+<h5 align="center"> https://api-questionados-agosb.herokuapp.com/</h5>
+<h5 align="center">https://documenter.getpostman.com/view/16185945/TzzHmD4S</h5>            
+
